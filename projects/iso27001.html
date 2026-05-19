@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ISO 27001:2022 Risk Assessment — Pharma e-Log System · Akash S Cherian</title>
+<meta name="description" content="Full ISMS risk assessment for a pharma e-log system: asset inventory, threat models, risk treatment plan mapped to Annex A controls and 21 CFR Part 11." />
+<link rel="stylesheet" href="../assets/styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">Akash S Cherian</a>
+    <div class="nav-links">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<section class="project-hero">
+  <div class="container">
+    <a href="../index.html#projects" class="back-link">← Back to projects</a>
+    <p class="eyebrow">GRC project · 2024</p>
+    <h1>ISO 27001:2022 risk assessment — pharma e-log system</h1>
+    <p style="font-size: 17px; color: #5f5e5a; margin: 0;">A full ISMS-style risk assessment for an electronic-log system used in pharmaceutical manufacturing, mapping security risks to both ISO 27001:2022 Annex A controls and 21 CFR Part 11 requirements.</p>
+
+    <div class="project-meta">
+      <span class="tag purple">ISO 27001:2022</span>
+      <span class="tag purple">21 CFR Part 11</span>
+      <span class="tag purple">GxP / ALCOA+</span>
+      <span class="tag teal">Risk register</span>
+      <span class="tag teal">Threat modelling</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 0;">
+  <div class="container project-body">
+
+    <h2>Context</h2>
+    <p>Pharma manufacturing sites are required to keep detailed logs of every action that touches a regulated product — cleaning logs, calibration logs, deviation logs. Historically these were paper; the move to e-logs introduces a new attack surface and a new compliance burden. The system has to satisfy <strong>two overlapping frameworks at once</strong>: ISO 27001 (information security) and 21 CFR Part 11 (FDA rules on electronic records and electronic signatures).</p>
+
+    <h2>Approach</h2>
+    <p>I followed the ISO 27001:2022 Clause 6.1.2 risk-assessment process, adapted for the pharma context:</p>
+    <ol>
+      <li><strong>Asset inventory</strong> — every information asset that the e-log system touches: user accounts, audit-trail records, batch data, the application server, the database, backups, network paths.</li>
+      <li><strong>Threat &amp; vulnerability identification</strong> — for each asset, what could go wrong (insider modifies a log entry, audit trail tampered with, credentials shared, backups lost).</li>
+      <li><strong>Risk analysis</strong> — likelihood × impact scoring on a 1–5 scale, producing a risk score and risk level (Low / Medium / High / Critical).</li>
+      <li><strong>Risk treatment plan</strong> — for each non-acceptable risk: a treatment option (mitigate / transfer / avoid / accept) plus the specific Annex A controls and 21 CFR Part 11 sections that justify the mitigation.</li>
+    </ol>
+
+    <h2>Example: audit-trail tampering risk</h2>
+    <p>This is the canonical pharma risk — and a useful one to walk through because it sits at the intersection of both frameworks.</p>
+
+    <div class="callout">
+      <strong>Risk:</strong> An operator with system access modifies an entry in the e-log after the fact to hide a deviation.<br>
+      <strong>Likelihood:</strong> 2 (low — requires intent + access) · <strong>Impact:</strong> 5 (regulatory fine, product recall) · <strong>Score:</strong> 10 (High)
+    </div>
+
+    <p><strong>Treatment:</strong> mitigate via three layered controls:</p>
+    <ul>
+      <li><strong>ISO 27001 A.8.15 — Logging:</strong> immutable, append-only audit trail; every change captured as a new event, never an overwrite.</li>
+      <li><strong>ISO 27001 A.5.18 — Access rights:</strong> separation of duties so the person creating a log cannot approve/close it.</li>
+      <li><strong>21 CFR Part 11 §11.10(e):</strong> the audit trail must be computer-generated, time-stamped, and capture the operator, the original value, and the new value.</li>
+    </ul>
+
+    <h2>Deliverables</h2>
+    <ul>
+      <li><strong>Risk register</strong> — spreadsheet listing every identified risk with score, owner, treatment plan, target date, and current status.</li>
+      <li><strong>Control gap analysis</strong> — for each Annex A control, whether it was implemented, partially implemented, or missing, with evidence pointers.</li>
+      <li><strong>Threat model summary</strong> — one-page diagram of the e-log system's data flows with trust boundaries marked, and the top threats per boundary.</li>
+      <li><strong>Risk treatment plan</strong> — prioritised list of remediations, ordered by risk score and effort.</li>
+    </ul>
+
+    <h2>What I learned</h2>
+    <ul>
+      <li><strong>The two frameworks aren't redundant — they reinforce each other.</strong> ISO 27001 tells you <em>how</em> to protect information; 21 CFR Part 11 tells you <em>what evidence</em> regulators need to see. A good control satisfies both.</li>
+      <li><strong>Risk scoring is the easy part. Owner assignment is the hard part.</strong> Every risk needs a name next to it, and getting people to accept ownership is the actual work.</li>
+      <li><strong>Audit-readiness ≠ security.</strong> A system can be fully documented and still insecure. The risk register surfaces gaps the docs hide.</li>
+    </ul>
+
+    <div class="callout info">
+      <strong>Why this matters for SOC/security roles:</strong> compliance frameworks aren't bureaucracy — they're the language a security team uses to justify spend, prioritise alerts, and explain risk to leadership. Knowing how to map a technical control back to ISO/PCI/CFR makes you immediately useful.
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    © <span id="year">2026</span> Akash S Cherian · <a href="../index.html">Home</a> · <a href="https://github.com/akashscherian" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+
+<script src="../assets/main.js"></script>
+</body>
+</html>

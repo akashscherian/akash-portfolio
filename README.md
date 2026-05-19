@@ -14,14 +14,14 @@ Static personal site / portfolio. Built as plain HTML + CSS + a tiny bit of JS �
 ├── assets/
 │   ├── styles.css             Shared stylesheet
 │   └── main.js                Tiny JS (sets year in footer)
-├── resume.pdf                 Your résumé (REPLACE THIS — see below)
+├── Akash_S_Cherian_Resume.pdf Your résumé
 ├── vercel.json                Vercel config (clean URLs, security headers)
 └── README.md
 ```
 
 ## Before you deploy
 
-1. **Drop your résumé in.** Put your latest résumé at the project root and name it `resume.pdf`. The "Download résumé" buttons on the site link to `/resume.pdf`. If you'd rather link to the .docx, change the `href="resume.pdf"` references in `index.html` to point at your file (e.g. `resume.docx`).
+1. **Drop your résumé in.** Put your latest résumé at the project root and name it `Akash_S_Cherian_Resume.pdf`. The "Download résumé" buttons on the site link to `/Akash_S_Cherian_Resume.pdf`. If you'd rather link to the .docx, change the `href="Akash_S_Cherian_Resume.pdf"` references in `index.html` to point at your file.
 2. **Sanity-check the content.** Look through every page once — make sure the dates, names, and project descriptions match how you talk about them in interviews.
 3. **(Optional) Custom domain.** Vercel gives you a `*.vercel.app` URL for free. You can add a custom domain later under Project Settings → Domains.
 
